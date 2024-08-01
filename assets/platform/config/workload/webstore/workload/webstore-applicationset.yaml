@@ -15,13 +15,11 @@ spec:
                   workload_webstore: 'true'  
               values:
                 workload: webstore
-
           - git:
               repoURL: '{{metadata.annotations.workload_repo_url}}'
               revision: '{{metadata.annotations.workload_repo_revision}}'
               directories:
                 - path: '{{metadata.annotations.workload_repo_basepath}}{{values.workload}}/*'
-                     
   template:
     metadata:
       name: 'webstore-{{metadata.labels.environment}}-{{path.basename}}'
@@ -47,4 +45,3 @@ spec:
           backoff:
             duration: 1m
           limit: 100
-
